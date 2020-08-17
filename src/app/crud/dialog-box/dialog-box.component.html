@@ -1,16 +1,22 @@
 <h1 mat-dialog-title>Edit Information</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input  placeholder="{{local_data.first_name}}" matInput [(ngModel)]="local_data.first_name">
+    <input placeholder="First Name" matInput [(ngModel)]="local_data.first_name">
   </mat-form-field>
+  <br>
   <mat-form-field>
-    <input  placeholder="{{local_data.last_name}}" matInput [(ngModel)]="local_data.last_name">
+    <input placeholder="Last Name" matInput [(ngModel)]="local_data.last_name">
   </mat-form-field>
+  <br>
   <mat-form-field>
-    <input  placeholder="{{local_data.email}}" matInput [(ngModel)]="local_data.email">
+    <input placeholder="Email" matInput [(ngModel)]="local_data.email">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button class="primary-button" (click)="doAction()">Update</button>
-  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  <button mat-button class="btn btn-primary" (click)="doAction()">Update</button>
+  <button mat-button class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
 </div>
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
