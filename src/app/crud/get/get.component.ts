@@ -20,8 +20,10 @@ export class GetComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getAll().subscribe((data) => {
-      console.log(data);
-      this.users = data['data'];
+      if (data['data'].length) {
+        console.log(data);
+        this.users = data['data'];
+      }
     });
     this.userForm = this.fb.group({
       email: [''],
@@ -40,6 +42,9 @@ export class GetComponent implements OnInit {
   }
 
   deleteRow(id){
+    this.crudService.delete(id).subscribe(res => {
+      console.log('User deleted!');
+    });
     for (let i = 0; i < this.users.length; ++i) {
       if (this.users[i].id === id) {
         this.users.splice(i, 1);
@@ -48,15 +53,21 @@ export class GetComponent implements OnInit {
   }
 
   updateRow(id) {
+    
     for (let i = 0; i < this.users.length; ++i) {
       if (this.users[i].id === id) {
         const dialogRef = this.dialog.open(DialogBoxComponent, {
-          width: '500px',
+          width: '700px',
           data: this.users[i]
         });
 
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
+            this.crudService.update(id, result).subscribe(res => {
+              console.log('User updated!');
+              console.log(res);
+              this.users.push(res);
+            });
             this.users.splice(i, 1, result);
           }
         });

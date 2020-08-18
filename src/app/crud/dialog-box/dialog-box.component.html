@@ -1,15 +1,19 @@
 <h1 mat-dialog-title>Edit Information</h1>
 <div mat-dialog-content>
-  <mat-form-field [style.width.px]=400>
+  <mat-form-field [style.width.px]=600>
     <input placeholder="First Name" matInput [(ngModel)]="local_data.first_name">
   </mat-form-field>
   <br>
-  <mat-form-field [style.width.px]=400>
+  <mat-form-field [style.width.px]=600>
     <input placeholder="Last Name" matInput [(ngModel)]="local_data.last_name">
   </mat-form-field>
   <br>
-  <mat-form-field [style.width.px]=400>
+  <mat-form-field [style.width.px]=600>
     <input placeholder="Email" matInput [(ngModel)]="local_data.email">
+  </mat-form-field>
+  <br>
+  <mat-form-field [style.width.px]=600>
+    <input placeholder="Avatar Link" matInput [(ngModel)]="local_data.avatar">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

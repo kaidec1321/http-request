@@ -35,7 +35,7 @@ export class CrudService {
   }
 
   update(id, user): Observable<User> {
-    return this.httpClient.put<User>(this.apiServer, this.httpOptions)
+    return this.httpClient.put<User>(this.apiServer, JSON.stringify(user), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
