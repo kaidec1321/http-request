@@ -9,5 +9,5 @@
 }
 
 input {
-    width: 500;
+    width: 500 !important;
 }

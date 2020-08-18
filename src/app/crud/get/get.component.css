@@ -1,16 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bangers&display=swap');
+
 .user-view {
     width: 50%;
     float: left;
 }
 
 .view_item {
+    border-radius: 15px;
     width: 100%;
-	background: #fff;
+	background: rgb(235, 214, 243);
 	border: 1px solid #e2efe1;
 	margin: 10px;
 	padding: 10px 20px;
 	display: flex;
     align-items: center;
+    box-shadow: 5px 5px 10px 3px #9d9d9d;
+    transition: transform .2s;
+}
+
+.view_item:hover {
+    transform: scale(1.1);
 }
 
 .view_item:last-child{
@@ -18,12 +28,23 @@
 }
 
 .view_item .vi_left{
-    width: 30%;
+    width: 17%;
 	margin-right: 25px;
 }
 
+.vertical { 
+    width: 5%;
+    border-left: 1px solid rgba(117, 113, 113, 0.74); 
+    height: 170px; 
+} 
+
+.name {
+    font-family: Raleway;
+    font-size: large;
+}
+
 .view_item .vi_center{
-    width: 50%;
+    width: 55%;
 	margin-right: 25px;
 }
 
@@ -32,11 +53,22 @@
 }
 
 .my-form {
-    width: 40%;
     float: right;
-    padding-right: 80px;
+    position: fixed;
+    width: 40%;
+    left: 1100px;
+    top: 50px;
+    padding: 20px;
+    border: thin;
+    border-radius: 10px;
+    background-color: rgb(164, 177, 190);
 }
 
 button {
     width: 150px;
+}
+
+h1 {
+    font-family: Bangers;
+    font-size: 50px;
 }
