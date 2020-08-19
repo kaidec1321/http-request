@@ -28,7 +28,7 @@ export class CrudService {
   }
 
   getAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.apiServer)
+    return this.httpClient.get<User[]>(this.apiServer, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -42,7 +42,7 @@ export class CrudService {
   }
 
   delete(id){
-    return this.httpClient.delete<User>(this.apiServer, this.httpOptions)
+    return this.httpClient.delete<User>(this.apiServer + '/' + id, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
