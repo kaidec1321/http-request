@@ -1,5 +1,3 @@
-import { UrlHandlingStrategy } from "@angular/router";
-
 export interface User {
     id: number,
     email: string,

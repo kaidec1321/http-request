@@ -5,6 +5,7 @@ import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { User } from './user'
+import { Response } from './response'
 
 @Injectable({
   providedIn: 'root'
@@ -20,29 +21,29 @@ export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(user): Observable<User> {
-    return this.httpClient.post<User>(this.apiServer, JSON.stringify(user), this.httpOptions)
+  create(user): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.apiServer, JSON.stringify(user), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.apiServer, this.httpOptions)
+  getAll(): Observable<Response> {
+    return this.httpClient.get<Response>(this.apiServer, this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  update(id, user): Observable<boolean> {
+    return this.httpClient.put<boolean>(this.apiServer, JSON.stringify(user), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  update(id, user): Observable<User> {
-    return this.httpClient.put<User>(this.apiServer, JSON.stringify(user), this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
-
-  delete(id){
-    return this.httpClient.delete<User>(this.apiServer + '/' + id, this.httpOptions)
+  delete(id): Observable<boolean> {
+    return this.httpClient.delete<boolean>(this.apiServer + '/' + id, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )

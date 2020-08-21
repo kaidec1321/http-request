@@ -1,9 +1,10 @@
 <div class="view">
     <div class="user-view">
+        <button mat-button class="btn btn-primary" (click)="createNewUser()" style="margin-bottom: 15px;">Create new user</button>
         <div *ngFor="let user of users" [attr.id]="user.id">
             <div class="view_item">
                 <div class="vi_left">
-                    <img src="{{user.avatar}}" alt="{{user.first_name}}" width="150px" height="150px">
+                    <img src="{{user.avatar}}" alt="{{user.first_name}}" width="100%" height="100%">
                 </div>
                 <div class= "vertical"></div>
                 <div class="vi_center">
@@ -11,14 +12,15 @@
                     <p class="email">{{user.email}}</p>
                 </div>
                 <div class="vi_right">
-                    <button type="button" class="btn btn-danger" (click)="deleteRow(user.id)">Delete</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteRow(user.id)" style="width: 100%;">Delete</button>
                     <br><br>
-                    <button type="button" class="btn btn-warning" (click)="updateRow(user.id)">Edit</button>
+                    <button type="button" class="btn btn-warning" (click)="updateRow(user.id)" style="width: 100%;">Edit</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="my-form">
+    
+    <!-- <div class="my-form">
       <h1>Add new user</h1>
       <form [formGroup]="userForm" (ngSubmit)="submitForm()">
           <div class="form-group">
@@ -38,9 +40,8 @@
               <input type="url" class="form-control" id="avatar" placeholder="Enter link" formControlName="avatar">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-  </div>
-    
+      </form> -->
+  <!-- </div> -->
 </div>
 
 
