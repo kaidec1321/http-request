@@ -21,8 +21,8 @@ export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(user): Observable<boolean> {
-    return this.httpClient.post<boolean>(this.apiServer, JSON.stringify(user), this.httpOptions)
+  create(user): Observable<User> {
+    return this.httpClient.post<User>(this.apiServer, JSON.stringify(user), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )

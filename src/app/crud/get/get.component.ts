@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../crud.service';
 import { User } from '../user';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { Response } from '../response';
@@ -15,8 +14,7 @@ export class GetComponent implements OnInit {
   users: User[] = [];
   // userForm: FormGroup;
 
-  constructor( public fb: FormBuilder,
-               public crudService: CrudService,
+  constructor( public crudService: CrudService,
                public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -35,11 +33,11 @@ export class GetComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.crudService.create(result).subscribe(res => {
-        console.log('User created!');
-        console.log(res);
+          console.log('User created!');
+          console.log(res);
+          this.users.push(res);
         });
         console.log(result);
-        this.users.push(result);
       }
     });
   }
@@ -50,6 +48,7 @@ export class GetComponent implements OnInit {
       let index = this.users.indexOf(selectedUser);
       this.users.splice(index, 1);
       console.log('User deleted!');
+      console.log(res);
     });
   }
 

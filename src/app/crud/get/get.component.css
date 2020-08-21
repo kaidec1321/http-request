@@ -35,7 +35,7 @@
 .vertical { 
     width: 5%;
     border-left: 1px solid rgba(117, 113, 113, 0.74); 
-    height: 170px; 
+    height: 100%; 
 } 
 
 .name {
