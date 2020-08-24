@@ -19,6 +19,7 @@ export class GetComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getAll().subscribe((data: Response) => {
+      console.log(data);
       if (data.data && data.data.length) {
         console.log(data);
         this.users = data.data;
@@ -33,9 +34,11 @@ export class GetComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.crudService.create(result).subscribe(res => {
-          console.log('User created!');
-          console.log(res);
-          this.users.push(res);
+          if (res != null) {
+            console.log('User created!');
+            console.log(res);
+            this.users.push(res);
+          }
         });
         console.log(result);
       }
@@ -44,28 +47,30 @@ export class GetComponent implements OnInit {
 
   deleteRow(id) {
     this.crudService.delete(id).subscribe(res => {
-      let selectedUser = this.users.find(user => user.id == id);
-      let index = this.users.indexOf(selectedUser);
+      if (res != null) {
+        console.log('User deleted!');
+        console.log(res);
+      }
+      let index = this.users.findIndex(user => user.id == id);
       this.users.splice(index, 1);
-      console.log('User deleted!');
-      console.log(res);
     });
   }
 
   updateRow(id) {
-    let selectedUser = this.users.find(user => user.id == id);
-    let index = this.users.indexOf(selectedUser);
+    let index = this.users.findIndex(user => user.id == id);
 
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '700px',
-      data: selectedUser
+      data: this.users[index]
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.crudService.update(id, result).subscribe(res => {
-          console.log('User updated!');
-          console.log(res);
+          if (res != null) {
+            console.log('User updated!');
+            console.log(res);
+          }
         });
         // this.users.push(result);
         this.users.splice(index, 1, result);
